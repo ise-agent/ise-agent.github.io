@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISEA: Multi-Agent Vulnerability Fixing System - Technical Report</title>
-    <meta name="description" content="ISEA achieves #4 ranking on SWE-bench Lite with 49% success rate using Neo4j knowledge graphs and multi-agent coordination for automated vulnerability fixing.">
-    <meta name="keywords" content="ISEA, Neo4j, Multi-Agent, Vulnerability Fixing, SWE-bench, Automated Software Engineering">
-    <meta property="og:title" content="ISEA: Advanced Multi-Agent Vulnerability Fixing System">
+    <title>ISEA: Intelligent Software Engineering Agent</title>
+    <meta name="description" content="ISEA achieves #4 ranking on SWE-bench Lite with 49% success rate using Neo4j knowledge graphs and multi-agent coordination for automated issues fixing.">
+    <meta name="keywords" content="ISEA, Neo4j, Multi-Agent, Issue Fixing, SWE-bench, Automated Software Engineering">
+    <meta property="og:title" content="ISEA: Advanced Multi-Agent Issue Fixing System">
     <meta property="og:description" content="Ranked #4 on SWE-bench Lite with 49% success rate. Interactive technical report with Neo4j knowledge graphs.">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://hanyu44.github.io/njuagent/">
@@ -16,7 +16,7 @@
     <div class="container">
         <header>
             <div class="header-content">
-                <h1>ISEA: Multi-Agent Vulnerability Fixing System</h1>
+                <h1>ISEA: Multi-Agent Issue Fixing System</h1>
                 <p>Advanced AI-Powered Autonomous Software Engineering</p>
                 <div class="benchmark-score">
                     <div class="score-number">49%</div>
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td><strong>ISEA (Ours)</strong></td>
+                            <td><strong>ISEA + Claude 3-5 Sonnet (Ours)</strong></td>
                             <td><strong>49.00</strong></td>
                             <td>2025-09-10</td>
                             <td>🚀 Competitive</td>
@@ -106,7 +106,7 @@
             <section id="overview">
                 <h2>🚀 System Overview</h2>
                 
-                <p>ISEA is an advanced multi-agent vulnerability fixing system that achieves a <strong>49% success rate</strong> on SWE-bench Lite, ranking #4 among all submissions. The system combines Neo4j knowledge graphs, specialized AI agents, and intelligent patch generation to automatically locate, analyze, and fix software vulnerabilities.</p>
+                <p>ISEA is an advanced multi-agent issue fixing system that achieves a <strong>49% success rate</strong> on SWE-bench Lite, ranking #4 among all submissions. The system combines Neo4j knowledge graphs, specialized AI agents, and intelligent patch generation to automatically locate, analyze, and fix software issues.</p>
                 
                 <h3>🏗️ Multi-Agent Architecture</h3>
                 <div class="architecture-diagram">
@@ -118,7 +118,7 @@
                         <div class="arrow">→</div>
                         <div class="agent-box">
                             <h4>Locator Agent</h4>
-                            <p>Identifies ≤5 vulnerability locations</p>
+                            <p>Identifies ≤5 issue locations</p>
                         </div>
                         <div class="arrow">→</div>
                         <div class="agent-box">
@@ -230,7 +230,7 @@
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">5</span>
-                            <div class="stat-label">Max Vulnerability Locations</div>
+                            <div class="stat-label">Max Issue Locations</div>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">3</span>
@@ -247,7 +247,7 @@
             <section id="pipeline">
                 <h2>🔄 Complete System Pipeline</h2>
                 <div class="academic-diagram">
-                    <div class="diagram-title">ISEA Multi-Agent Vulnerability Fixing Pipeline</div>
+                    <div class="diagram-title">ISEA Multi-Agent Issue Fixing Pipeline</div>
                     <div class="flow-container">
                         <!-- Phase 1: Repository Preprocessing -->
                         <div class="flow-row">
@@ -349,13 +349,13 @@
                     <div class="pipeline-step">
                         <div class="step-header">
                             <span class="step-icon">🎯</span>
-                            <h4>Phase 2: Vulnerability Location Analysis</h4>
+                            <h4>Phase 2: Issue Location Analysis</h4>
                         </div>
                         <div class="step-content">
                             <p><strong>Input:</strong> Problem Statement from SWE-bench</p>
-                            <p><strong>Locator Agent:</strong> Analyzes problem description, navigates knowledge graph, identifies up to 5 suspicious vulnerability locations</p>
+                            <p><strong>Locator Agent:</strong> Analyzes problem description, navigates knowledge graph, identifies up to 5 suspicious issue locations</p>
                             <p><strong>Suggester Agent:</strong> Receives identified locations, collects contextual information, proposes coordinated repair strategies</p>
-                            <p><strong>Output:</strong> Vulnerability locations + comprehensive repair suggestions</p>
+                            <p><strong>Output:</strong> Issue locations + comprehensive repair suggestions</p>
                         </div>
                     </div>
 
@@ -463,12 +463,12 @@ ADD_CONDITIONAL_EDGES(routing_logic)<br>
 COMPILE workflow_graph<br><br>
 
 EXECUTE workflow_graph.stream(initial_state)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;→ Locator identifies ≤5 vulnerability locations<br>
+&nbsp;&nbsp;&nbsp;&nbsp;→ Locator identifies ≤5 issue locations<br>
 &nbsp;&nbsp;&nbsp;&nbsp;→ Suggester analyzes context and proposes repair strategies<br>
 &nbsp;&nbsp;&nbsp;&nbsp;→ Fixer generates coordinated patches<br><br>
 
 <span style="color: #f39c12;">## Phase 3: Multi-Variant Patch Generation</span><br>
-<strong>FOR EACH</strong> vulnerability_location <strong>IN</strong> identified_locations:<br>
+<strong>FOR EACH</strong> issue_location <strong>IN</strong> identified_locations:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;BUILD context_prompt(location, surrounding_code, imports, suggestions)<br><br>
     
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Generate precise patch variant</span><br>
@@ -574,7 +574,7 @@ IMPLEMENT real_time_analytics_dashboard()
 <strong>DEFINE</strong> AgentState <strong>EXTENDS</strong> MessagesState:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Core workflow state</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;conversation_history: MessageSequence<br>
-&nbsp;&nbsp;&nbsp;&nbsp;vulnerability_locations: List[LocationDescriptor]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;issue_locations: List[LocationDescriptor]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;repair_suggestions: StrategicAnalysis<br>
 &nbsp;&nbsp;&nbsp;&nbsp;generated_patches: PatchCollection<br><br>
     
@@ -606,7 +606,7 @@ IMPLEMENT real_time_analytics_dashboard()
                         <h4>🎯 40-Variant Strategy</h4>
                         <p><strong>4 Rounds × 10 Patches</strong><br>
                         Each round: 1 precise patch (T=0.0) + 9 diverse patches (T=0.8)<br>
-                        Total: 40 candidate solutions per vulnerability</p>
+                        Total: 40 candidate solutions per issue</p>
                     </div>
                     <div class="feature-card">
                         <h4>🔧 Temperature-Based Diversity</h4>
@@ -625,7 +625,7 @@ IMPLEMENT real_time_analytics_dashboard()
                     <div class="feature-card">
                         <h4>⚡ Multi-Location Coordination</h4>
                         <p><strong>Interconnected Fixes</strong><br>
-                        Up to 5 vulnerability locations<br>
+                        Up to 5 issue locations<br>
                         Coordinated patch application<br>
                         Atomic rollback on failure</p>
                     </div>
@@ -644,7 +644,7 @@ IMPLEMENT real_time_analytics_dashboard()
         </main>
 
         <footer>
-            <p>&copy; 2025 ISEA - Advanced Multi-Agent Vulnerability Fixing System</p>
+            <p>&copy; 2025 ISEA: Intelligent Software Engineering Agent</p>
             <p>Achieving 49% success rate (#4 ranking) on SWE-bench Lite through innovative AI-powered software engineering</p>
         </footer>
     </div>
