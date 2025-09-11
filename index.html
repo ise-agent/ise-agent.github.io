@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISEA: Multi-Agent Vulnerability Fixing System - Technical Report</title>
+    <meta name="description" content="ISEA achieves #4 ranking on SWE-bench Lite with 49% success rate using Neo4j knowledge graphs and multi-agent coordination for automated vulnerability fixing.">
+    <meta name="keywords" content="ISEA, Neo4j, Multi-Agent, Vulnerability Fixing, SWE-bench, Automated Software Engineering">
+    <meta property="og:title" content="ISEA: Advanced Multi-Agent Vulnerability Fixing System">
+    <meta property="og:description" content="Ranked #4 on SWE-bench Lite with 49% success rate. Interactive technical report with Neo4j knowledge graphs.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://hanyu44.github.io/njuagent/">
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>ISEA: Multi-Agent Vulnerability Fixing System</h1>
+                <p>Advanced AI-Powered Autonomous Software Engineering</p>
+                <div class="benchmark-score">
+                    <div class="score-number">49%</div>
+                    <div>SWE-bench Lite Success Rate</div>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#leaderboard">Leaderboard</a></li>
+                <li><a href="#overview">System Overview</a></li>
+                <li><a href="#workflow">Complete Workflow</a></li>
+                <li><a href="#implementation">Technical Implementation</a></li>
+                <li><a href="#results">Performance Results</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="leaderboard">
+                <h2>SWE-bench Lite Leaderboard
+                    🆕</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>System</th>
+                            <th>Score (%)</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🥇</td>
+                            <td><strong>ExpeRepair-v1.0 + Claude 4 Sonnet</strong></td>
+                            <td><strong>60.33</strong></td>
+                            <td>2025-06-25</td>
+                            <td>✅ Active</td>
+                        </tr>
+                        <tr>
+                            <td>🥈</td>
+                            <td><strong>Refact.ai Agent</strong></td>
+                            <td><strong>60.00</strong></td>
+                            <td>2025-04-25</td>
+                            <td>✅ Active</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td><strong>SWE-agent + Claude 4 Sonnet</strong></td>
+                            <td><strong>56.67</strong></td>
+                            <td>2025-05-26</td>
+                            <td>✅ Active</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>ISEA (Ours)</strong></td>
+                            <td><strong>49.00</strong></td>
+                            <td>2025-09-10</td>
+                            <td>🚀 Competitive</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>ExpeRepair-v1.0</td>
+                            <td>48.33</td>
+                            <td>2025-06-13</td>
+                            <td>✅ Active</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>SWE-agent + Claude 3.7 Sonnet</td>
+                            <td>48.00</td>
+                            <td>2025-02-26</td>
+                            <td>✅ Active</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>DARS Agent</td>
+                            <td>47.00</td>
+                            <td>2025-02-05</td>
+                            <td>✅ Active</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="overview">
+                <h2>🚀 System Overview</h2>
+                
+                <p>ISEA is an advanced multi-agent vulnerability fixing system that achieves a <strong>49% success rate</strong> on SWE-bench Lite, ranking #4 among all submissions. The system combines Neo4j knowledge graphs, specialized AI agents, and intelligent patch generation to automatically locate, analyze, and fix software vulnerabilities.</p>
+                
+                <h3>🏗️ Multi-Agent Architecture</h3>
+                <div class="architecture-diagram">
+                    <div class="agent-flow">
+                        <div class="agent-box">
+                            <h4>Neo4j Knowledge Graph</h4>
+                            <p>Code structure & relationships</p>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="agent-box">
+                            <h4>Locator Agent</h4>
+                            <p>Identifies ≤5 vulnerability locations</p>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="agent-box">
+                            <h4>Suggester Agent</h4>
+                            <p>Proposes repair strategies</p>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="agent-box">
+                            <h4>Fixer Agent</h4>
+                            <p>Generates 40 patch variants</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Core Components</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🧠 LangGraph State Management</h4>
+                        <p>Sophisticated state graph orchestrating agent interactions and maintaining conversation context throughout the debugging process.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔍 Neo4j Knowledge Graph</h4>
+                        <p>Comprehensive code structure database enabling intelligent navigation and relationship analysis across the codebase.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛠️ Advanced Tool Framework</h4>
+                        <p>14 specialized tools for code analysis, search, and manipulation, powered by custom Neo4j queries and file operations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔄 Dynamic Summarization</h4>
+                        <p>Intelligent context management that summarizes long conversations to maintain focus and prevent token limit issues.</p>
+                    </div>
+                </div>
+
+                <h3>🛠️ Comprehensive Tool Suite</h3>
+                <div class="tools-section">
+                    <h4 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.2rem;">🔗 Core Neo4j Knowledge Graph Tools (11 tools)</h4>
+                    <div class="tool-list">
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• file (str): The absolute path to the source file\n• full_qualified_name (str): The fully qualified method name, e.g., <myrepo.module.ClassName.method>">
+                            <div class="tool-name">search_method_accurately</div>
+                            <div class="tool-desc">Extract the entire method body, including its definition line and all implementation code, from a given file based on the file path and fully qualified method name.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• name (str): Name of the method to search for">
+                            <div class="tool-name">search_method_fuzzy</div>
+                            <div class="tool-desc">Search for all methods in files that contain the given method name.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• file (str): The file path\n• full_qualified_name (str): The full name of the method (e.g., myrepo.module.ClassName.method)">
+                            <div class="tool-name">get_relevant_entities</div>
+                            <div class="tool-desc">Get code relationships for a method by its file and full qualified name.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• file (str): The path to the Python file">
+                            <div class="tool-name">get_all_classes_and_methods</div>
+                            <div class="tool-desc">List all classes and methods inside a Python file.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• class_name (str): The class name">
+                            <div class="tool-name">search_constructor_in_class</div>
+                            <div class="tool-desc">Find and return constructor method in a given class.</div>
+                        </div>
+                        
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• class_name (str): The class name">
+                            <div class="tool-name">search_field_variables_of_class</div>
+                            <div class="tool-desc">Return all field variables of a class from the knowledge graph.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• python_file_path (str): The path to the Python file">
+                            <div class="tool-name">extract_imports</div>
+                            <div class="tool-desc">Extract all import statements from a Python file.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• keyword (str): The keyword to search for">
+                            <div class="tool-name">search_for_file_by_keyword_in_neo4j</div>
+                            <div class="tool-desc">Search Neo4j for files which files'content contain a keyword.</div>
+                        </div>
+                        <div class="tool-item" style="border-left: 4px solid #e74c3c;" data-tooltip="Parameters:\n• variable_name (str): The variable name to search">
+                            <div class="tool-name">search_variable_by_only_name</div>
+                            <div class="tool-desc">Find all variables that match a given name.</div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: #2c3e50; margin: 2rem 0 1rem 0; font-size: 1.2rem;">📁 File System & Analysis Tools (3 tools)</h4>
+                    <div class="tool-list">
+                        <div class="tool-item" data-tooltip="Parameters:\n• dir_path (str): The directory where bugs may exist\n• prefix (str, optional): Prefix for each line (internal use)">
+                            <div class="tool-name">browse_project_structure</div>
+                            <div class="tool-desc">Return the directories and filenames under this path.</div>
+                        </div>
+                        <div class="tool-item" data-tooltip="Parameters:\n• file_path (str): Absolute path to the file\n• start_line (int): Starting line number (1-based)\n• end_line (int): Ending line number\n\n⚠️ Only use this tool when you have already identified the exact file and line range you need. Avoid calling this tool repeatedly for small or overlapping ranges. Try to gather as much context as possible in a single call.">
+                            <div class="tool-name">read_file_lines</div>
+                            <div class="tool-desc">Read specified line range from a file, automatically adjusting line numbers to ensure they don't exceed maximum lines or 50-line limit.</div>
+                        </div>
+                        <div class="tool-item" data-tooltip="Parameters:\n• keyword (str): The target of interest to search for (e.g., a function name, class name, variable, or specific string)\n• search_dir (str): The root directory to search in">
+                            <div class="tool-name">search_keyword_with_context</div>
+                            <div class="tool-desc">Search all .py files under the given directory for occurrences of the target keyword. For each match, return the matched line together with its surrounding context (3 lines before and 3 lines after), along with the file path and the start/end line numbers of the snippet.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Performance Metrics</h3>
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">49%</span>
+                            <div class="stat-label">SWE-bench Lite Success Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">40</span>
+                            <div class="stat-label">Patch Variants Per Bug</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <div class="stat-label">Generation Rounds</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <div class="stat-label">Max Vulnerability Locations</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <div class="stat-label">Specialized Agents</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">13</span>
+                            <div class="stat-label">Total Specialized Tools</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pipeline">
+                <h2>🔄 Complete System Pipeline</h2>
+                <div class="academic-diagram">
+                    <div class="diagram-title">ISEA Multi-Agent Vulnerability Fixing Pipeline</div>
+                    <div class="flow-container">
+                        <!-- Phase 1: Repository Preprocessing -->
+                        <div class="flow-row">
+                            <div class="flow-box preprocessing">
+                                <h5>Repository Input</h5>
+                                <p>SWE-bench Project</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-box preprocessing">
+                                <h5>Neo4j Knowledge Graph</h5>
+                                <p>Code Structure Indexing</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-arrow">↓</div>
+
+                        <!-- Phase 2: Multi-Agent Analysis -->
+                        <div class="flow-row">
+                            <div class="flow-box analysis">
+                                <h5>Problem Statement</h5>
+                                <p>Bug Description Input</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-box analysis">
+                                <h5>Locator Agent</h5>
+                                <p>Identifies ≤5 Locations</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-box analysis">
+                                <h5>Suggester Agent</h5>
+                                <p>Receives Locations<br>+ Proposes Strategies</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-arrow">↓</div>
+
+                        <!-- Phase 3: Patch Generation -->
+                        <div class="flow-row">
+                            <div class="flow-box generation">
+                                <h5>Fixer Agent</h5>
+                                <p>Patch Implementation</p>
+                                <div class="generation-details">
+                                    <div>Round 1: 10 patches</div>
+                                    <div>Round 2: 10 patches</div>
+                                    <div>Round 3: 10 patches</div>
+                                    <div>Round 4: 10 patches</div>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-box generation">
+                                <h5>Multi-Temperature Generation</h5>
+                                <p>T=0.0: 1 precise patch<br>T=0.8: 9 diverse patches</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-arrow">↓</div>
+
+                        <!-- Phase 4: Intelligent Selection -->
+                        <div class="flow-row">
+                            <div class="flow-box selection">
+                                <h5>40 Patch Candidates</h5>
+                                <p>Multi-variant Pool</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-box selection">
+                                <h5>4-Level Filtering</h5>
+                                <div class="selection-criteria">
+                                    <div class="criteria-item">1. Regression Tests</div>
+                                    <div class="criteria-item">2. Reproduction Tests</div>
+                                    <div class="criteria-item">3. Normalization</div>
+                                    <div class="criteria-item">4. Patch Size</div>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-box selection">
+                                <h5>Optimal Patch</h5>
+                                <p>Final Solution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="workflow">
+                <h2>⚙️ Complete Workflow</h2>
+                
+                <h3>📋 4-Phase Pipeline</h3>
+                <div class="workflow-pipeline">
+                    <div class="pipeline-step">
+                        <div class="step-header">
+                            <span class="step-icon">🏗️</span>
+                            <h4>Phase 1: Repository Preprocessing</h4>
+                        </div>
+                        <div class="step-content">
+                            <p><strong>Neo4j Knowledge Graph Construction:</strong> Parse and index the entire repository into a comprehensive knowledge graph, capturing classes, methods, variables, and their relationships (inheritance, calls, references, etc.)</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="step-header">
+                            <span class="step-icon">🎯</span>
+                            <h4>Phase 2: Vulnerability Location Analysis</h4>
+                        </div>
+                        <div class="step-content">
+                            <p><strong>Input:</strong> Problem Statement from SWE-bench</p>
+                            <p><strong>Locator Agent:</strong> Analyzes problem description, navigates knowledge graph, identifies up to 5 suspicious vulnerability locations</p>
+                            <p><strong>Suggester Agent:</strong> Receives identified locations, collects contextual information, proposes coordinated repair strategies</p>
+                            <p><strong>Output:</strong> Vulnerability locations + comprehensive repair suggestions</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="step-header">
+                            <span class="step-icon">🔧</span>
+                            <h4>Phase 3: Multi-Round Patch Generation</h4>
+                        </div>
+                        <div class="step-content">
+                            <p><strong>Fixer Agent:</strong> Implements coordinated patches for identified locations</p>
+                            <p><strong>Generation Strategy:</strong></p>
+                            <ul>
+                                <li>4 rounds × 10 patches = 40 total variants</li>
+                                <li>Each round: 1 precise patch (T=0.0) + 9 diverse patches (T=0.8)</li>
+                                <li>Multi-location coordination for interconnected fixes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-step">
+                        <div class="step-header">
+                            <span class="step-icon">🏆</span>
+                            <h4>Phase 4: Intelligent Patch Selection</h4>
+                        </div>
+                        <div class="step-content">
+                            <p><strong>4-Level Filtering Hierarchy:</strong></p>
+                            <ol>
+                                <li><strong>Regression Test Pass Rate:</strong> Select patches with maximum passing tests</li>
+                                <li><strong>Reproduction Test Pass Rate:</strong> Prioritize patches that pass original reproduction tests</li>
+                                <li><strong>Normalized Patch Diversity:</strong> Choose most frequent normalized patterns</li>
+                                <li><strong>Patch Size Optimization:</strong> Prefer patches with larger meaningful changes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Intelligent State Management</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 Dynamic Routing</h4>
+                        <p>Conditional edges route between agents based on current state and message content, enabling adaptive workflow management.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Context Summarization</h4>
+                        <p>Automatic conversation summarization when message count exceeds thresholds, maintaining essential context while preventing token overflow.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛡️ Error Recovery</h4>
+                        <p>Robust error handling with JSON parsing fallbacks and tool execution error management.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 API Statistics</h4>
+                        <p>Comprehensive tracking of API calls, token usage, and performance metrics for optimization and analysis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="implementation">
+                <h2>💻 Technical Implementation</h2>
+
+                <h3>Knowledge Graph Schema</h3>
+                <div class="code-block">
+<strong># Neo4j Node Types and Relationships</strong><br><br>
+<strong>Nodes:</strong> Class, Method, Variable, Test<br><br>
+<strong>Relationships:</strong><br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">BELONGS_TO:</span> Method/Variable → Class<br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">CALLS:</span> Method → Method<br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">HAS_METHOD:</span> Class ↔ Method<br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">HAS_VARIABLE:</span> Class ↔ Variable<br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">INHERITS:</span> Class → Class<br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">REFERENCES:</span> Method → Variable/Class<br>
+&nbsp;&nbsp;• <span style="color: #00d4aa;">TESTED:</span> Method → Test
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <h4 style="color: #2c3e50; margin-bottom: 1rem;">Interactive Neo4j Knowledge Graph Visualization</h4>
+                    <iframe src="components/interactive_graph.html" 
+                            width="840" 
+                            height="700" 
+                            style="border: 1px solid #e5e7eb; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: block; margin: 0 auto; max-width: 100%;">
+                    </iframe>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem; font-style: italic;">
+                        Interactive Neo4j knowledge graph: <strong>Drag nodes to reposition</strong> • <strong>Click nodes to highlight connections</strong> • <strong>Hover for details</strong><br>
+                        Shows real relationships: Classes (pink), Methods (blue), Variables (orange) with CALLS, BELONGS_TO, HAS_METHOD edges
+                    </p>
+                </div>
+
+                <h3>Complete Pipeline Implementation</h3>
+                <div class="code-block">
+<strong># ISEA Complete Workflow Pseudocode</strong><br><br>
+
+<span style="color: #f39c12;">## Phase 1: System Initialization</span><br>
+INITIALIZE multi_agent_system<br>
+SET precise_llm = LLM(model=CLAUDE_SONNET, temperature=0.0)<br>
+SET creative_llm = LLM(model=CLAUDE_SONNET, temperature=0.8)<br><br>
+
+CREATE Agent_Locator(tools=NEO4J_TOOLS + FILE_TOOLS)<br>
+CREATE Agent_Suggester(tools=NEO4J_TOOLS + FILE_TOOLS)<br>
+CREATE Agent_Fixer(tools=NEO4J_TOOLS + FILE_TOOLS)<br><br>
+
+<span style="color: #f39c12;">## Phase 2: Multi-Agent Workflow Execution</span><br>
+INITIALIZE workflow_graph = StateGraph(AgentState)<br>
+ADD_NODES(Locator, Suggester, Fixer, ToolNodes, Summarizer)<br>
+ADD_CONDITIONAL_EDGES(routing_logic)<br>
+COMPILE workflow_graph<br><br>
+
+EXECUTE workflow_graph.stream(initial_state)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;→ Locator identifies ≤5 vulnerability locations<br>
+&nbsp;&nbsp;&nbsp;&nbsp;→ Suggester analyzes context and proposes repair strategies<br>
+&nbsp;&nbsp;&nbsp;&nbsp;→ Fixer generates coordinated patches<br><br>
+
+<span style="color: #f39c12;">## Phase 3: Multi-Variant Patch Generation</span><br>
+<strong>FOR EACH</strong> vulnerability_location <strong>IN</strong> identified_locations:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BUILD context_prompt(location, surrounding_code, imports, suggestions)<br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Generate precise patch variant</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;precise_patch = precise_llm.INVOKE(context_prompt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EXTRACT code_block FROM precise_patch.response<br>
+&nbsp;&nbsp;&nbsp;&nbsp;STORE precise_patch[location_id] = extracted_code<br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Generate diverse patch variants</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;diverse_patches = []<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>FOR</strong> variant_num = 1 <strong>TO</strong> 8:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant_response = creative_llm.INVOKE(context_prompt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant_code = EXTRACT_CODE(variant_response)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diverse_patches.APPEND(variant_code)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>END FOR</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;STORE variant_patches[location_id] = diverse_patches<br>
+<strong>END FOR</strong><br><br>
+
+<span style="color: #f39c12;">## Phase 4: Atomic Multi-File Patch Application</span><br>
+<strong>FUNCTION</strong> apply_patches_and_generate_diff(patch_collection):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;file_modifications = CREATE_EMPTY_MAP()<br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Group patches by target files</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>FOR EACH</strong> location, patch_code <strong>IN</strong> patch_collection:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target_file = GET_FILE_PATH(location)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line_range = GET_LINE_RANGE(location)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_modifications[target_file].ADD(line_range, patch_code)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>END FOR</strong><br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Apply modifications atomically (reverse order)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>FOR EACH</strong> file <strong>IN</strong> file_modifications:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;original_content = READ_FILE(file)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modifications = SORT_REVERSE_BY_LINE_NUMBER(file_modifications[file])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>FOR EACH</strong> modification <strong>IN</strong> modifications:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REPLACE_LINES(original_content, modification.range, modification.code)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>END FOR</strong><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WRITE_FILE(file, modified_content)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>END FOR</strong><br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;diff_output = EXECUTE_GIT_DIFF(repository_root)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RESTORE_ORIGINAL_FILES(original_state)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>RETURN</strong> diff_output<br>
+<strong>END FUNCTION</strong><br><br>
+
+<span style="color: #f39c12;">## Phase 5: Comprehensive Results Export</span><br>
+all_patch_variants = INITIALIZE_COLLECTION()<br>
+all_patch_variants["precise_patches"] = precise_patches<br>
+<strong>FOR</strong> variant_index = 1 <strong>TO</strong> 8:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;variant_set = EXTRACT_VARIANT(diverse_patches, variant_index)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;variant_diff = apply_patches_and_generate_diff(variant_set)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;all_patch_variants[f"variant_{variant_index}"] = variant_diff<br>
+<strong>END FOR</strong><br><br>
+
+final_results = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"patch_variants": all_patch_variants,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"git_diffs": diff_collection,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"metadata": execution_statistics<br>
+}<br>
+EXPORT_JSON(final_results, output_directory)
+                </div>
+
+                <h3>Key Technical Innovations</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔍 CKGRetriever Integration</h4>
+                        <p>Custom Neo4j retriever with singleton pattern ensuring efficient database connections and query optimization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎛️ Dynamic Temperature Control</h4>
+                        <p>Variable temperature settings (0.0 for precision, 0.8 for creativity) optimizing patch generation diversity.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📏 Intelligent Truncation</h4>
+                        <p>Smart output truncation preventing token overflow while preserving essential information integrity.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔧 Process Management</h4>
+                        <p>Sophisticated patch processing with line number management and context preservation.</p>
+                    </div>
+                </div>
+
+                <h3>Model Configuration</h3>
+                <div class="code-block">
+<strong># LLM System Configuration</strong><br>
+PRIMARY_MODEL = ADVANCED_LLM_BACKEND<br>
+TEMPERATURE_PRECISE = 0.0  <span style="color: #95a5a6;">// Deterministic responses</span><br>
+TEMPERATURE_CREATIVE = 0.8  <span style="color: #95a5a6;">// Diverse solution generation</span><br>
+CONTEXT_THRESHOLD = 16  <span style="color: #95a5a6;">// Message count for summarization trigger</span><br>
+TOKEN_OPTIMIZATION = ENABLED  <span style="color: #95a5a6;">// Intelligent content compression</span><br><br>
+
+<strong># Performance Monitoring System</strong><br>
+ENABLE api_statistics_collection()<br>
+TRACK prompt_content, response_content<br>
+MONITOR token_usage(prompt_tokens, completion_tokens, total_tokens)<br>
+LOG execution_timestamps<br>
+EXPORT performance_metrics TO json_format<br>
+IMPLEMENT real_time_analytics_dashboard()
+                </div>
+
+                <h3>Core Agent State Definition</h3>
+                <div class="code-block">
+<strong># Multi-Agent State Management Schema</strong><br><br>
+
+<strong>DEFINE</strong> AgentState <strong>EXTENDS</strong> MessagesState:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Core workflow state</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;conversation_history: MessageSequence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vulnerability_locations: List[LocationDescriptor]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repair_suggestions: StrategicAnalysis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;generated_patches: PatchCollection<br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Agent coordination flags</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;locator_ready: Boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;suggester_ready: Boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fixer_ready: Boolean<br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Context management</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;conversation_summary: CompressedContext<br>
+&nbsp;&nbsp;&nbsp;&nbsp;current_agent: AgentIdentifier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;next_agent: AgentIdentifier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;execution_metrics: PerformanceCounters<br><br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Problem context</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;problem_statement: ProblemDescription<br>
+&nbsp;&nbsp;&nbsp;&nbsp;project_context: ProjectMetadata<br>
+&nbsp;&nbsp;&nbsp;&nbsp;failed_attempts: List[FailureRecord]<br>
+<strong>END DEFINE</strong>
+                </div>
+            </section>
+
+            <section id="results">
+                <h2>📊 Performance Results & Analysis</h2>
+
+                <h3>Advanced Multi-Round Patch Generation Strategy</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎯 40-Variant Strategy</h4>
+                        <p><strong>4 Rounds × 10 Patches</strong><br>
+                        Each round: 1 precise patch (T=0.0) + 9 diverse patches (T=0.8)<br>
+                        Total: 40 candidate solutions per vulnerability</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔧 Temperature-Based Diversity</h4>
+                        <p><strong>Precision vs Creativity Balance</strong><br>
+                        T=0.0: Deterministic, focused solutions<br>
+                        T=0.8: Creative, diverse approaches</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 4-Level Selection Hierarchy</h4>
+                        <p><strong>Intelligent Filtering Process</strong><br>
+                        1. Regression test pass rate<br>
+                        2. Reproduction test validation<br>
+                        3. Normalized pattern frequency<br>
+                        4. Patch size optimization</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ Multi-Location Coordination</h4>
+                        <p><strong>Interconnected Fixes</strong><br>
+                        Up to 5 vulnerability locations<br>
+                        Coordinated patch application<br>
+                        Atomic rollback on failure</p>
+                    </div>
+                </div>
+
+                <div class="results-highlight">
+                    <h3>🎯 Future Enhancements & Optimization Roadmap</h3>
+                    <p><strong>Performance Gap Analysis:</strong> 11% gap to current leader (60.33%) presents clear optimization opportunities</p>
+                    <p><strong>Next Steps:</strong></p>
+                    <p>• <strong>Claude 4 Integration:</strong> Upgrading to latest language model for enhanced reasoning</p>
+                    <p>• <strong>Multimodal Integration:</strong> Adding vision capabilities for diagram and UI debugging</p>
+                    <p>• <strong>Advanced Test Generation:</strong> Automatic test case creation for patch validation</p>
+                    <p>• <strong>Performance Optimization:</strong> Enhanced caching and parallel processing</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 ISEA - Advanced Multi-Agent Vulnerability Fixing System</p>
+            <p>Achieving 49% success rate (#4 ranking) on SWE-bench Lite through innovative AI-powered software engineering</p>
+        </footer>
+    </div>
+
+    <script src="static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Neo4j Knowledge Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="../static/css/graph.css">
+    <!-- 备用样式，以防外部CSS加载失败 -->
+    <style>
+        .graph-container { 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            padding: 20px; 
+            margin: 20px auto; 
+            max-width: 840px; 
+            text-align: center; 
+        }
+        .node { cursor: pointer; stroke-width: 2px; }
+        .node.class { fill: #ff69b4; stroke: #e91e63; }
+        .node.method { fill: #4fc3f7; stroke: #03a9f4; }
+        .node.variable { fill: #ff9800; stroke: #f57c00; }
+        .control-btn { 
+            background: #3498db; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            margin: 0 5px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <div class="graph-container">
+        <div class="graph-title">Interactive Neo4j Knowledge Graph</div>
+        <div class="graph-subtitle">Drag nodes • Click to highlight • Hover for details</div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff69b4; border-color: #e91e63;"></div>
+                <span>Classes</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4fc3f7; border-color: #03a9f4;"></div>
+                <span>Methods</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff9800; border-color: #f57c00;"></div>
+                <span>Variables</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn" onclick="restartSimulation()">Restart Animation</button>
+            <button class="control-btn" onclick="centerGraph()">Center Graph</button>
+            <button class="control-btn" onclick="randomizeLayout()">Randomize</button>
+        </div>
+        
+        <svg id="graph-svg" width="800" height="600"></svg>
+    </div>
+    
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="../static/js/graph.js"></script>
+    
+    <!-- 错误检查和备用方案 -->
+    <script>
+        // 检查资源加载
+        setTimeout(() => {
+            if (typeof d3 === 'undefined') {
+                document.body.innerHTML = '<div style="color: red; text-align: center; margin: 50px; font-size: 18px;">❌ 无法加载D3.js库，请检查网络连接</div>';
+                return;
+            }
+            
+            const svg = document.getElementById('graph-svg');
+            if (!svg || !svg.children.length) {
+                console.log('Graph may not have loaded properly, attempting manual initialization...');
+                // 尝试手动初始化
+                if (typeof initializeGraph === 'function') {
+                    initializeGraph();
+                }
+            }
+        }, 3000);
+        
+        // 添加加载指示器
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.graph-container');
+            if (container) {
+                const loader = document.createElement('div');
+                loader.id = 'loader';
+                loader.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 18px; color: #666;';
+                container.style.position = 'relative';
+                container.appendChild(loader);
+                
+                // 3秒后移除加载指示器
+                setTimeout(() => {
+                    if (loader.parentNode) {
+                        loader.parentNode.removeChild(loader);
+                    }
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
