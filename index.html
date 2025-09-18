@@ -478,7 +478,7 @@ EXECUTE workflow_graph.stream(initial_state)<br>
     
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">// Generate diverse patch variants</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;diverse_patches = []<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<strong>FOR</strong> variant_num = 1 <strong>TO</strong> 8:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>FOR</strong> variant_num = 1 <strong>TO</strong> 9 :<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant_response = creative_llm.INVOKE(context_prompt)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant_code = EXTRACT_CODE(variant_response)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diverse_patches.APPEND(variant_code)<br>
@@ -515,7 +515,7 @@ EXECUTE workflow_graph.stream(initial_state)<br>
 <span style="color: #f39c12;">## Phase 5: Comprehensive Results Export</span><br>
 all_patch_variants = INITIALIZE_COLLECTION()<br>
 all_patch_variants["precise_patches"] = precise_patches<br>
-<strong>FOR</strong> variant_index = 1 <strong>TO</strong> 8:<br>
+<strong>FOR</strong> variant_index = 1 <strong>TO</strong> 9:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;variant_set = EXTRACT_VARIANT(diverse_patches, variant_index)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;variant_diff = apply_patches_and_generate_diff(variant_set)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;all_patch_variants[f"variant_{variant_index}"] = variant_diff<br>
