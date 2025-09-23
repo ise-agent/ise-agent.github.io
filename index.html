@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISE-AGENTG</title>
+    <title>ISEA</title>
     <!-- 引入外部资源 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -16,14 +16,38 @@
     
 </head>
 <body class="font-inter text-dark min-h-screen">
+    <!-- 语言切换按钮 -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="lang-toggle" class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-dark font-medium hover:bg-white transition-all shadow-md">
+            <span class="zh">English</span>
+            <span class="en hidden">中文</span>
+        </button>
+    </div>
+
+    <!-- 视频播放模态框 -->
+    <div id="video-modal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl">
+            <!-- 关闭按钮 -->
+            <button id="close-modal" class="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors">
+                <i class="fa fa-times"></i>
+            </button>
+            
+            <!-- 视频容器 -->
+            <div class="bg-black rounded-xl overflow-hidden shadow-2xl">
+                <video id="modal-video" class="w-full aspect-video" controls poster="">
+                    您的浏览器不支持HTML5视频播放
+                </video>
+            </div>
+        </div>
+    </div>
+
     <!-- 英雄区域 -->
     <header class="pt-32 pb-20 px-4 text-white gradient-bg">
         <div class="container mx-auto text-center">
             <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-6 text-shadow leading-tight hero-title" data-text="ISE-AGENT">
-                <span class="text-blue-600">ISE-</span><span class="text-indigo-600">AGENT</span>
+                <span class="text-blue-600">ISEA</span>
             </h1>
-            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto mb-10 text-blue-900/80">
-                探索AI Agent在全流程软件开发中的实践成果，见证智能工具如何重塑需求开发、测试调试与维护的效率边界
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto mb-10 text-blue-900/80" data-i18n="hero-desc">
             </p>
         </div>
     </header>
@@ -32,8 +56,8 @@
     <section id="software-flow" class="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div class="container mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">全流程软件开发支撑工具</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto">智能Agent驱动的完整软件开发生命周期解决方案</p>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4" data-i18n="flow-title"></h2>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-i18n="flow-desc"></p>
             </div>
             
             <!-- 流程图 -->
@@ -46,11 +70,11 @@
                             <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fa fa-file-text-o text-blue-600 text-2xl"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-2 text-gray-800">软件需求开发和代码生成</h3>
-                            <p class="text-gray-600">智能分析用户需求，自动生成高质量代码，提升开发效率</p>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800" data-i18n="step1-title"></h3>
+                            <p class="text-gray-600" data-i18n="step1-desc"></p>
                         </div>
                     </div>
-                    
+
                     <!-- 箭头 -->
                     <div class="flow-arrow flex-shrink-0 w-16 h-1 bg-blue-200 rounded-full mx-2"></div>
                     
@@ -60,8 +84,8 @@
                             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fa fa-bug text-green-600 text-2xl"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-2 text-gray-800">软件测试与调试</h3>
-                            <p class="text-gray-600">自动化测试用例生成，智能错误检测与修复建议</p>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800" data-i18n="step2-title"></h3>
+                            <p class="text-gray-600" data-i18n="step2-desc"></p>
                         </div>
                     </div>
                     
@@ -74,8 +98,8 @@
                             <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <i class="fa fa-refresh text-purple-600 text-2xl"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-2 text-gray-800">软件演化和维护</h3>
-                            <p class="text-gray-600">持续监控系统性能，智能优化与迭代建议</p>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800" data-i18n="step3-title"></h3>
+                            <p class="text-gray-600" data-i18n="step3-desc"></p>
                         </div>
                     </div>
                 </div>
@@ -89,9 +113,9 @@
                                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                                     <i class="fa fa-file-text-o text-blue-600 text-xl"></i>
                                 </div>
-                                <h3 class="text-lg font-bold text-gray-800">软件需求开发和代码生成</h3>
+                                <h3 class="text-lg font-bold text-gray-800" data-i18n="step1-title"></h3>
                             </div>
-                            <p class="text-gray-600">智能分析用户需求，自动生成高质量代码，提升开发效率</p>
+                            <p class="text-gray-600" data-i18n="step1-desc"></p>
                         </div>
                     </div>
                     
@@ -107,9 +131,9 @@
                                 <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
                                     <i class="fa fa-bug text-green-600 text-xl"></i>
                                 </div>
-                                <h3 class="text-lg font-bold text-gray-800">软件测试与调试</h3>
+                                <h3 class="text-lg font-bold text-gray-800" data-i18n="step2-title"></h3>
                             </div>
-                            <p class="text-gray-600">自动化测试用例生成，智能错误检测与修复建议</p>
+                            <p class="text-gray-600" data-i18n="step2-desc"></p>
                         </div>
                     </div>
                     
@@ -125,9 +149,9 @@
                                 <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
                                     <i class="fa fa-refresh text-purple-600 text-xl"></i>
                                 </div>
-                                <h3 class="text-lg font-bold text-gray-800">软件演化和维护</h3>
+                                <h3 class="text-lg font-bold text-gray-800" data-i18n="step3-title"></h3>
                             </div>
-                            <p class="text-gray-600">持续监控系统性能，智能优化与迭代建议</p>
+                            <p class="text-gray-600" data-i18n="step3-desc"></p>
                         </div>
                     </div>
                 </div>
@@ -135,7 +159,7 @@
             
             <!-- 底部说明 -->
             <div class="text-center mt-12">
-                <p class="text-gray-600 max-w-3xl mx-auto">我们的智能Agent通过深度学习与自然语言处理技术，为软件开发全流程提供智能化支持，显著提升开发效率与软件质量。</p>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-i18n="flow-bottom-desc"></p>
             </div>
         </div>
     </section>
@@ -144,117 +168,50 @@
     <section id="results" class="results-section py-20 px-4 bg-gradient-to-b from-white to-blue-50/30">
         <div class="container mx-auto results-container">
             <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">智能Agent成果展示</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">聚焦软件开发全流程，展示AI Agent在需求分析、代码生成、测试优化与系统维护中的实际应用成果</p>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4" data-i18n="results-title"></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="results-desc"></p>
             </div>
             
             <!-- 成果卡片容器 -->
             <div class="flex flex-col gap-12 max-w-6xl mx-auto">
+             
+                 <!-- 测试自动化Agent -->
+                <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
+                    <div class="result-card-content flex flex-col lg:flex-row">
+                        <!-- 左侧：名称和描述 -->
+                        <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors" data-i18n="testagent-name"></h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed text-lg" data-i18n="testagent-desc">
+                            </p>
+                            <div class="flex flex-wrap gap-4 mb-8">
+                                <span class="feature-tag"><span data-i18n="testagent-tag-1"></span></span>
+                                <span class="feature-tag"><span data-i18n="testagent-tag-2"></span></span>
+                                <span class="feature-tag"><span data-i18n="testagent-tag-3"></span></span>
+                            </div>
+                            <a href="#" class="detail-link text-lg">
+                                <span data-i18n="view-details"></span>
+                                <i class="fa fa-arrow-right ml-2 transition-transform"></i>
+                            </a>
+                        </div>
 
-                <!-- 需求分析 -->
-                <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
-                    <div class="result-card-content flex flex-col lg:flex-row">
-                        <!-- 左侧：名称和描述 -->
-                        <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors">需求分析智能体</h3>
-                            <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                                基于自然语言处理技术的智能客服系统，能够理解复杂用户查询，提供精准解答，显著提升客户服务效率与满意度。
-                            </p>
-                            <div class="flex flex-wrap gap-4 mb-8">
-                                <span class="feature-tag"><i class="fa fa-comments"></i> 自然语言理解</span>
-                                <span class="feature-tag"><i class="fa fa-rocket"></i> 响应速度提升80%</span>
-                                <span class="feature-tag"><i class="fa fa-smile-o"></i> 客户满意度+35%</span>
-                                <span class="feature-tag"><i class="fa fa-cogs"></i> 多轮对话管理</span>
-                            </div>
-                            <a href="#" class="detail-link text-lg">
-                                查看详情
-                                <i class="fa fa-arrow-right ml-2 transition-transform"></i>
-                            </a>
-                        </div>
-                        <!-- 右侧：视频框 -->
-                        <div class="lg:w-1/2 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 lg:p-10 flex items-center justify-center">
-                            <div class="video-container w-full h-full aspect-video max-w-2xl bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="需求分析智能体" class="w-full h-full object-cover">
-                                <div class="play-button">
-                                    <i class="fa fa-play"></i>
-                                </div>
-                                <div class="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-2 rounded-full text-sm font-medium">
-                                    演示视频: 需求分析智能体
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 代码生成Agent -->
-                <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
-                    <div class="result-card-content flex flex-col lg:flex-row-reverse">
-                        <!-- 左侧：名称和描述 -->
-                        <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors">智能代码生成器</h3>
-                            <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                                基于深度学习的代码生成系统，能够根据自然语言描述自动生成高质量代码，支持多种编程语言，大幅提升开发效率。
-                            </p>
-                            <div class="flex flex-wrap gap-4 mb-8">
-                                <span class="feature-tag"><i class="fa fa-code"></i> 多语言支持</span>
-                                <span class="feature-tag"><i class="fa fa-magic"></i> 代码质量提升60%</span>
-                                <span class="feature-tag"><i class="fa fa-clock-o"></i> 开发时间减少50%</span>
-                                <span class="feature-tag"><i class="fa fa-refresh"></i> 智能迭代优化</span>
-                            </div>
-                            <a href="#" class="detail-link text-lg">
-                                查看详情
-                                <i class="fa fa-arrow-right ml-2 transition-transform"></i>
-                            </a>
-                        </div>
-                        <!-- 右侧：视频框 -->
-                        <div class="lg:w-1/2 bg-gradient-to-br from-green-50 to-teal-50 p-6 lg:p-10 flex items-center justify-center">
-                            <div class="video-container w-full h-full aspect-video max-w-2xl bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="智能代码生成器演示" class="w-full h-full object-cover">
-                                <div class="play-button">
-                                    <i class="fa fa-play"></i>
-                                </div>
-                                <div class="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-2 rounded-full text-sm font-medium">
-                                    演示视频: 智能代码生成器
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 测试自动化Agent -->
-                <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
-                    <div class="result-card-content flex flex-col lg:flex-row">
-                        <!-- 左侧：名称和描述 -->
-                        <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors">自动化测试平台</h3>
-                            <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                                智能测试自动化系统，能够自动生成测试用例，执行全面测试并生成详细报告，显著提升软件质量与测试效率。
-                            </p>
-                            <div class="flex flex-wrap gap-4 mb-8">
-                                <span class="feature-tag"><i class="fa fa-bug"></i> 缺陷检测率95%</span>
-                                <span class="feature-tag"><i class="fa fa-line-chart"></i> 测试覆盖率提升70%</span>
-                                <span class="feature-tag"><i class="fa fa-bolt"></i> 测试时间减少65%</span>
-                                <span class="feature-tag"><i class="fa fa-file-text-o"></i> 智能报告生成</span>
-                            </div>
-                            <a href="#" class="detail-link text-lg">
-                                查看详情
-                                <i class="fa fa-arrow-right ml-2 transition-transform"></i>
-                            </a>
-                        </div>
                         <!-- 右侧：视频框 -->
                         <div class="lg:w-1/2 bg-gradient-to-br from-purple-50 to-pink-50 p-6 lg:p-10 flex items-center justify-center">
-                            <div class="video-container w-full h-full aspect-video max-w-2xl bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="自动化测试平台演示" class="w-full h-full object-cover">
+                            <div class="video-container w-full h-full aspect-video max-w-2xl bg-gray-800 rounded-xl overflow-hidden shadow-lg cursor-pointer"
+                                 data-video="./video/testagent.mp4"
+                                 data-poster="./img/video-poster.png">
+                                  <img  src="./img/video-poster.png"  
+                                        class="w-full h-full object-cover">
                                 <div class="play-button">
                                     <i class="fa fa-play"></i>
                                 </div>
                                 <div class="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-2 rounded-full text-sm font-medium">
-                                    演示视频: 自动化测试平台
+                                    <span data-i18n="video-title"></span>: <span data-i18n="testagent-name"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -263,4 +220,6 @@
 
 <!-- 引入脚本文件 -->
 <script src="./js/index.js"></script>
+<script src="./js/language.js"></script>
+<script src="./js/video.js"></script>
 </html>

@@ -179,6 +179,7 @@
     z-index: 2;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .play-button:hover {
@@ -311,4 +312,33 @@ scrollbar-width: none; /* Firefox */
 
 body::-webkit-scrollbar {
 display: none; /* Chrome, Safari and Opera */
+}
+
+/* 视频模态框样式 */
+#video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-video {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+#close-modal {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#close-modal:hover {
+    transform: scale(1.1);
 }

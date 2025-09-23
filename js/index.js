@@ -80,11 +80,3 @@ const animateStats = () => {
 
 // 页面加载完成后启动统计动画
 window.addEventListener('load', animateStats);
-
-// 为播放按钮添加点击效果
-document.querySelectorAll('.play-button').forEach(button => {
-    button.addEventListener('click', function() {
-        // 这里可以添加视频播放逻辑
-        alert('视频播放功能即将实现');
-    });
-});
