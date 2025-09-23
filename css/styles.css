@@ -1,0 +1,314 @@
+/* 自定义工具类 */
+@layer utilities {
+    .content-auto {
+        content-visibility: auto;
+    }
+    .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card-shadow {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    }
+    .card-shadow-hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+}
+
+/* 背景渐变动画 */
+.gradient-bg {
+    background: linear-gradient(-45deg, #e0f2fe, #dbeafe, #eff6ff, #bfdbfe, #93c5fd);
+    background-size: 400% 400%;
+    animation: gradient 18s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 75%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 25%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 为标题添加微妙的发光效果 */
+.hero-title {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(59, 130, 246, 0.2);
+    filter: blur(8px);
+    z-index: -1;
+}
+
+/* 卡片展开动画 */
+.result-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 数字增长动画 */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.stat-item {
+    animation: countUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.3s; }
+.stat-item:nth-child(3) { animation-delay: 0.5s; }
+.stat-item:nth-child(4) { animation-delay: 0.7s; }
+
+/* 流程图样式 */
+.flow-step {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.flow-step:hover {
+    transform: translateY(-5px);
+}
+
+.flow-arrow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flow-arrow::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-top: 3px solid #3b82f6;
+    border-right: 3px solid #3b82f6;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 1024px) {
+    .flow-arrow::after {
+        transform: rotate(135deg);
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* 美化成果展示区 */
+.result-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.result-card:hover::before {
+    opacity: 1;
+}
+
+.result-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.video-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+.video-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.result-card:hover .video-container::after {
+    opacity: 1;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:hover {
+    background: white;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.play-button i {
+    color: #3b82f6;
+    font-size: 2rem;
+    margin-left: 4px;
+}
+
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-right: 0.75rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+}
+
+.feature-tag i {
+    margin-right: 0.5rem;
+}
+
+.result-title {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover .result-title {
+    background: linear-gradient(135deg, #1e40af, #6d28d9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.detail-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: #3b82f6;
+    transition: all 0.3s ease;
+}
+
+.detail-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.detail-link:hover::after {
+    width: 100%;
+}
+
+.detail-link:hover i {
+    transform: translateX(5px);
+}
+
+/* 添加微妙的背景图案 */
+.results-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.results-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.results-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.results-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+html {
+scrollbar-width: none; /* Firefox */
+-ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+display: none; /* Chrome, Safari and Opera */
+}
+
+body {
+-ms-overflow-style: none; /* IE and Edge */
+scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+display: none; /* Chrome, Safari and Opera */
+}
