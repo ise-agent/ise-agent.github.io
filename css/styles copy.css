@@ -116,10 +116,6 @@
     position: relative;
     overflow: hidden;
     border-radius: 1.5rem;
-    /* 固定卡片最小高度 */
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
 }
 
 .result-card::before {
@@ -142,49 +138,6 @@
 .result-card-content {
     position: relative;
     z-index: 1;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* 左侧文本区域样式 */
-.result-card-content > div:first-child {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* 描述文本区域限制 */
-.result-card-content p {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 8px;
-    max-height: 120px;
-    margin-bottom: 1rem;
-}
-
-/* 标签区域处理 */
-.result-card .flex.flex-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    max-height: 100px;
-    overflow-y: auto;
-    padding-right: 4px;
-    margin-bottom: 1rem;
-}
-
-/* 滚动条美化 */
-.result-card-content p::-webkit-scrollbar,
-.result-card .flex.flex-wrap::-webkit-scrollbar {
-    width: 4px;
-}
-
-.result-card-content p::-webkit-scrollbar-thumb,
-.result-card .flex.flex-wrap::-webkit-scrollbar-thumb {
-    background-color: rgba(59, 130, 246, 0.3);
-    border-radius: 2px;
 }
 
 .video-container {
@@ -286,7 +239,6 @@
     font-weight: 600;
     color: #3b82f6;
     transition: all 0.3s ease;
-    margin-top: auto;
 }
 
 .detail-link::after {
@@ -391,23 +343,3 @@ display: none; /* Chrome, Safari and Opera */
     transform: scale(1.1);
 }
 
-/* 响应式调整 */
-@media (max-width: 1024px) {
-    .result-card {
-        min-height: auto;
-    }
-    
-    .result-card-content p {
-        max-height: 150px;
-    }
-}
-
-@media (max-width: 768px) {
-    .result-card-content p {
-        max-height: 120px;
-    }
-    
-    .result-card .flex.flex-wrap {
-        max-height: 80px;
-    }
-}

@@ -18,11 +18,19 @@ const translations = {
     'view-details': 'View Details',
     'video-title': 'Demo Video',
       //  动态变化区域，以agent命名 {agent_anme,agent_description,agent_tag}
-    'testagent-name': 'Automated Testing Agent',
-    'testagent-desc': 'An AI and automation-based testing assistant system that can automatically execute test cases, identify software defects, generate detailed test reports, effectively reduce testing costs and improve software quality.',
-    'testagent-tag-1': 'Test Report Generation',
-    'testagent-tag-2': 'Defect Detection',
-    'testagent-tag-3': 'Automated Testing'
+    // testagent
+    'testagent-name': 'Knowledge Graph-Driven Unit Testing Agent',
+    'testagent-desc': 'A unit testing generation agent powered by a knowledge graph, designed to address issues such as inaccurate context extraction, lack of defect detection mechanisms, and coarse-grained task flows in traditional testing methods. It achieves the automated generation of high-quality unit test cases through multi-agent collaboration.',
+    'testagent-tag-1': 'Java environment mutation score approximately 84%',
+    'testagent-tag-2': 'Defect detection precision rate up to 92%',
+    'testagent-tag-3': 'Python line/branch coverage improved by 27%/51% compared to baseline',
+
+    // repairagent
+    'repairagent-name': 'Knowledge Graph-Driven Code Repair Agent',
+    'repairagent-desc': 'The Code Repair Agent is an advanced multi-agent issue-fixing system that leverages Neo4j knowledge graphs, specialized AI agents, and intelligent patch generation technologies to automatically locate, analyze, and fix software issues.',
+    'repairagent-tag-1': 'SWE-bench Lite success rate 51.33%',
+    'repairagent-tag-2': 'SWE-bench Lite ranking #4',
+    'repairagent-tag-3': 'Maximum number of issue locations identified: 5'
     //  ...........
   },
   zh: {
@@ -41,11 +49,20 @@ const translations = {
     'view-details': '查看详情',
     'video-title': '演示视频',
     //  动态变化区域，以agent命名 {agent_anme,agent_description,agent_tag}
-    'testagent-name': '自动化测试智能体',
-    'testagent-desc': '基于人工智能与自动化技术的测试辅助系统，可自动执行测试用例、识别软件缺陷、生成详细测试报告，有效降低测试成本并提升软件质量。',
-    'testagent-tag-1': '测试报告生成',
-    'testagent-tag-2': '缺陷检测',
-    'testagent-tag-3': '自动化测试'
+
+    // testagent
+    'testagent-name': '知识图谱驱动的单元测试智能体',
+    'testagent-desc': '单元测试智能体以知识图谱为核心支撑的单元测试生成智能体，旨在解决传统及现有测试生成方法中上下文信息提取不准确、缺陷检测机制缺失、任务流程粗粒度等问题，通过多智能体协作实现高质量单元测试用例的自动化生成。',
+    'testagent-tag-1': 'Java 环境综合变异分数约 84%',
+    'testagent-tag-2': '缺陷检测精确率达 92%',
+    'testagent-tag-3': 'Python 行 / 分支覆盖较基线提 27%/51%',
+
+    // repairagent
+    'repairagent-name': '知识图谱驱动的软件修复智能体',
+    'repairagent-desc': '软件修复智能体是一款先进的多智能体问题修复系统，基于 Neo4j 知识图谱、专用 AI 智能体和智能补丁生成技术，实现软件问题的自动定位、分析与修复。',
+    'repairagent-tag-1': 'SWE-bench Lite 成功率 51.33%',
+    'repairagent-tag-2': 'SWE-bench Lite 排名 #4',
+    'repairagent-tag-3': '最大问题定位数量 5 个'
     // ...............
 
     
@@ -57,7 +74,11 @@ let currentLang = 'zh';
 
 // 切换语言函数
 function toggleLanguage() {
-  currentLang = currentLang === 'zh' ? 'en' : 'zh';
+  currentLang = (currentLang === 'zh' ? 'en' : 'zh');
+
+// 修复后的语言切换按钮文本控制
+document.querySelector('.zh').classList.toggle('hidden', currentLang !== 'zh');
+document.querySelector('.en').classList.toggle('hidden', currentLang !== 'en');
   
   // 更新所有带data-i18n属性的元素
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -67,9 +88,7 @@ function toggleLanguage() {
     }
   });
   
-  // 更新语言切换按钮文本
-  document.querySelector('.zh').classList.toggle('hidden', currentLang === 'zh');
-  document.querySelector('.en').classList.toggle('hidden', currentLang === 'en');
+
   
   // 保存当前语言到本地存储
   localStorage.setItem('preferredLang', currentLang);
