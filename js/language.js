@@ -70,8 +70,8 @@ const translations = {
     'fix-agent-tag-3': '最大问题定位数量 5 个',
 
     // reproductiontestagent
-    'reproduction-test-agent-name': '复现测试智能体',
-    'reproduction-test-agent-desc': '复现测试智能体是基于知识图谱和多种 shell 工具的多 Agent 工作流，是一个结合可疑代码定位、根因分析、测试提示和迭代反馈的复现测试生成 Agent，在 swebench-lite 上实现了 55%（166/300）的 fail-to-pass 率。',
+    'reproduction-test-agent-name': '缺陷复现智能体',
+    'reproduction-test-agent-desc': '缺陷复现智能体是基于知识图谱和多种 shell 工具的多 Agent 工作流，是一个结合可疑代码定位、根因分析、测试提示和迭代反馈的复现测试生成 Agent，在 swebench-lite 上实现了 55%（166/300）的 fail-to-pass 率。',
     'reproduction-test-agent-tag-1': 'swebench-lite 复现率 55%'
     // ...............
 
