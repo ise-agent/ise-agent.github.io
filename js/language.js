@@ -63,11 +63,11 @@ const translations = {
     'testagent-tag-3': 'Python行/分支覆盖提升 27%/51%',
 
     // fixagent
-    'repairagent-name': '软件修复智能体',
-    'repairagent-desc': '软件修复智能体是一款先进的多智能体问题修复系统，基于 Neo4j 知识图谱、专用 AI 智能体和智能补丁生成技术，实现软件问题的自动定位、分析与修复。',
-    'repairagent-tag-1': 'SWE-bench Lite 成功率 51.33%',
-    'repairagent-tag-2': 'SWE-bench Lite 排名 #4',
-    'repairagent-tag-3': '最大问题定位数量 5 个',
+    'fix-agent-name': '软件修复智能体',
+    'fix-agent-desc': '软件修复智能体是一款先进的多智能体问题修复系统，基于 Neo4j 知识图谱、专用 AI 智能体和智能补丁生成技术，实现软件问题的自动定位、分析与修复。',
+    'fix-agent-tag-1': 'SWE-bench Lite 成功率 51.33%',
+    'fix-agent-tag-2': 'SWE-bench Lite 排名 #4',
+    'fix-agent-tag-3': '最大问题定位数量 5 个',
 
     // reproductiontestagent
     'reproduction-test-agent-name': '复现测试智能体',
