@@ -18,19 +18,24 @@ const translations = {
     'view-details': 'View Details',
     'video-title': 'Demo Video',
       //  动态变化区域，以agent命名 {agent_anme,agent_description,agent_tag}
-    // testagent
-    'testagent-name': 'Knowledge Graph-Driven Unit Testing Agent',
-    'testagent-desc': 'A unit testing generation agent powered by a knowledge graph, designed to address issues such as inaccurate context extraction, lack of defect detection mechanisms, and coarse-grained task flows in traditional testing methods. It achieves the automated generation of high-quality unit test cases through multi-agent collaboration.',
-    'testagent-tag-1': 'Java environment mutation score approximately 84%',
-    'testagent-tag-2': 'Defect detection precision rate up to 92%',
-    'testagent-tag-3': 'Python line/branch coverage improved by 27%/51% compared to baseline',
+      // testagent
+      'testagent-name': 'Unit Testing Intelligent Agent',
+      'testagent-desc': 'The Unit Testing Intelligent Agent is a unit test generation agent supported by knowledge graphs. It aims to address issues in traditional and existing test generation methods such as inaccurate context information extraction, lack of defect detection mechanisms, and coarse-grained task flows. It realizes automated generation of high-quality unit test cases through multi-agent collaboration.',
+      'testagent-tag-1': 'Java Environment Comprehensive Mutation Score ~84%',
+      'testagent-tag-2': 'Defect Detection Precision Rate up to 92%',
+      'testagent-tag-3': 'Python Line/Branch Coverage Increased by 27%/51%',
 
-    // repairagent
-    'repairagent-name': 'Knowledge Graph-Driven Code Repair Agent',
-    'repairagent-desc': 'The Code Repair Agent is an advanced multi-agent issue-fixing system that leverages Neo4j knowledge graphs, specialized AI agents, and intelligent patch generation technologies to automatically locate, analyze, and fix software issues.',
-    'repairagent-tag-1': 'SWE-bench Lite success rate 51.33%',
-    'repairagent-tag-2': 'SWE-bench Lite ranking #4',
-    'repairagent-tag-3': 'Maximum number of issue locations identified: 5'
+      // fixagent
+      'fix-agent-name': 'Software Fix Intelligent Agent',
+      'fix-agent-desc': 'The Software Fix Intelligent Agent is an advanced multi-agent problem repair system. Based on Neo4j knowledge graph, dedicated AI agents, and intelligent patch generation technology, it enables automatic localization, analysis, and repair of software issues.',
+      'fix-agent-tag-1': 'SWE-bench Lite Success Rate 51.33%',
+      'fix-agent-tag-2': 'SWE-bench Lite Ranking #4',
+      'fix-agent-tag-3': 'Maximum Issue Localization Count: 5',
+
+      // reproductiontestagent
+      'reproduction-test-agent-name': 'Reproduction Testing Intelligent Agent',
+      'reproduction-test-agent-desc': 'The Reproduction Testing Intelligent Agent is a multi-agent workflow based on knowledge graphs and various shell tools. It is a reproduction test generation agent integrating suspicious code localization, root cause analysis, test prompting, and iterative feedback, achieving a 55% (166/300) fail-to-pass rate on SWE-bench Lite.',
+      'reproduction-test-agent-tag-1': 'SWE-bench Lite reproduction rate: 55%'
     //  ...........
   },
   zh: {
@@ -51,18 +56,23 @@ const translations = {
     //  动态变化区域，以agent命名 {agent_anme,agent_description,agent_tag}
 
     // testagent
-    'testagent-name': '知识图谱驱动的单元测试智能体',
+    'testagent-name': '单元测试智能体',
     'testagent-desc': '单元测试智能体以知识图谱为核心支撑的单元测试生成智能体，旨在解决传统及现有测试生成方法中上下文信息提取不准确、缺陷检测机制缺失、任务流程粗粒度等问题，通过多智能体协作实现高质量单元测试用例的自动化生成。',
     'testagent-tag-1': 'Java 环境综合变异分数约 84%',
     'testagent-tag-2': '缺陷检测精确率达 92%',
-    'testagent-tag-3': 'Python 行 / 分支覆盖较基线提 27%/51%',
+    'testagent-tag-3': 'Python行/分支覆盖提升 27%/51%',
 
-    // repairagent
-    'repairagent-name': '知识图谱驱动的软件修复智能体',
+    // fixagent
+    'repairagent-name': '软件修复智能体',
     'repairagent-desc': '软件修复智能体是一款先进的多智能体问题修复系统，基于 Neo4j 知识图谱、专用 AI 智能体和智能补丁生成技术，实现软件问题的自动定位、分析与修复。',
     'repairagent-tag-1': 'SWE-bench Lite 成功率 51.33%',
     'repairagent-tag-2': 'SWE-bench Lite 排名 #4',
-    'repairagent-tag-3': '最大问题定位数量 5 个'
+    'repairagent-tag-3': '最大问题定位数量 5 个',
+
+    // reproductiontestagent
+    'reproduction-test-agent-name': '复现测试智能体',
+    'reproduction-test-agent-desc': '复现测试智能体是基于知识图谱和多种 shell 工具的多 Agent 工作流，是一个结合可疑代码定位、根因分析、测试提示和迭代反馈的复现测试生成 Agent，在 swebench-lite 上实现了 55%（166/300）的 fail-to-pass 率。',
+    'reproduction-test-agent-tag-1': 'swebench-lite 复现率 55%'
     // ...............
 
     
@@ -70,7 +80,7 @@ const translations = {
 };
 
 // 初始化语言
-let currentLang = 'zh';
+let currentLang = 'en';
 
 // 切换语言函数
 function toggleLanguage() {

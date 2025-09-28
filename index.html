@@ -26,8 +26,8 @@
         
         <!-- 语言切换按钮 -->
         <button id="lang-toggle" class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-dark font-medium hover:bg-white transition-all shadow-md">
-            <span class="zh">English</span>
-            <span class="en hidden">中文</span>
+            <span class="zh hidden">English</span>
+            <span class="en">中文</span>
         </button>
     </div>
     <!-- 视频播放模态框 -->
@@ -51,7 +51,7 @@
     <header class="pt-32 pb-20 px-4 text-white gradient-bg">
         <div class="container mx-auto text-center">
             <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-6 text-shadow leading-tight hero-title" data-text="ISE-AGENT">
-                <span class="text-blue-600">ISEA</span>
+                <span class="text-blue-600">ISEA</span><span class="text-blue-600">: Intelligent Software Engineering Agent</span>
             </h1>
             <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto mb-10 text-blue-900/80" data-i18n="hero-desc">
             </p>
@@ -177,7 +177,7 @@
             <!-- 成果卡片容器 -->
             <div class="flex flex-col gap-12 max-w-6xl mx-auto">
              
-                 <!-- 测试Agent -->
+                 <!-- testAgent -->
                 <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
                     <div class="result-card-content flex flex-col lg:flex-row">
                         <!-- 左侧：名称和描述 -->
@@ -190,7 +190,7 @@
                                 <span class="feature-tag"><span data-i18n="testagent-tag-2"></span></span>
                                 <span class="feature-tag"><span data-i18n="testagent-tag-3"></span></span>
                             </div>
-                            <a href="#" target="_blank" class="detail-link text-lg">
+                            <a href="https://github.com/ise-agent/test-agent-home" target="_blank" class="detail-link text-lg">
                                 <span data-i18n="view-details"></span>
                                 <i class="fa fa-arrow-right ml-2 transition-transform"></i>
                             </a>
@@ -214,20 +214,20 @@
                     </div>
                 </div>
 
-                <!-- 修复Agent -->
+                <!-- fixAgent -->
                 <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
                     <div class="result-card-content flex flex-col lg:flex-row">
                         <!-- 左侧：名称和描述 -->
                         <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors" data-i18n="repairagent-name"></h3>
-                            <p class="text-gray-600 mb-8 leading-relaxed text-lg" data-i18n="repairagent-desc">
+                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors" data-i18n="fix-agent-name"></h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed text-lg" data-i18n="fix-agent-desc">
                             </p>
                             <div class="flex flex-wrap gap-4 mb-8">
-                                <span class="feature-tag"><span data-i18n="repairagent-tag-1"></span></span>
-                                <span class="feature-tag"><span data-i18n="repairagent-tag-2"></span></span>
-                                <span class="feature-tag"><span data-i18n="repairagent-tag-3"></span></span>
+                                <span class="feature-tag"><span data-i18n="fix-agent-tag-1"></span></span>
+                                <span class="feature-tag"><span data-i18n="fix-agent-tag-2"></span></span>
+                                <span class="feature-tag"><span data-i18n="fix-agent-tag-3"></span></span>
                             </div>
-                            <a href="https://ise-agent.github.io/" target="_blank" class="detail-link text-lg">
+                            <a href="https://ise-agent.github.io/fix-agent-home/" target="_blank" class="detail-link text-lg">
                                 <span data-i18n="view-details"></span>
                                 <i class="fa fa-arrow-right ml-2 transition-transform"></i>
                             </a>
@@ -244,12 +244,48 @@
                                     <i class="fa fa-play"></i>
                                 </div>
                                 <div class="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-2 rounded-full text-sm font-medium">
-                                    <span data-i18n="video-title"></span>: <span data-i18n="repairagent-name"></span>
+                                    <span data-i18n="video-title"></span>: <span data-i18n="fix-agent-name"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- reproductiontestAgent -->
+                <div class="result-card bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover group">
+                    <div class="result-card-content flex flex-col lg:flex-row">
+                        <!-- 左侧：名称和描述 -->
+                        <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                            <h3 class="text-4xl font-bold mb-6 uppercase result-title group-hover:text-primary transition-colors" data-i18n="reproduction-test-agent-name"></h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed text-lg" data-i18n="reproduction-test-agent-desc">
+                            </p>
+                            <div class="flex flex-wrap gap-4 mb-8">
+                                <span class="feature-tag"><span data-i18n="reproduction-test-agent-tag-1"></span></span>
+                            </div>
+                            <a href="https://github.com/ise-agent/reproduction-test-agent-home" target="_blank" class="detail-link text-lg">
+                                <span data-i18n="view-details"></span>
+                                <i class="fa fa-arrow-right ml-2 transition-transform"></i>
+                            </a>
+                        </div>
+
+                        <!-- 右侧：视频框 -->
+                        <div class="lg:w-1/2 bg-gradient-to-br from-purple-50 to-pink-50 p-6 lg:p-10 flex items-center justify-center">
+                            <div class="video-container w-full h-full aspect-video max-w-2xl bg-gray-800 rounded-xl overflow-hidden shadow-lg cursor-pointer"
+                                 data-video="./video/reproductiontestagent.mp4"
+                                 data-poster="./img/video-poster.png">
+                                  <img  src="./img/video-poster.png"  
+                                        class="w-full h-full object-cover">
+                                <div class="play-button">
+                                    <i class="fa fa-play"></i>
+                                </div>
+                                <div class="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-2 rounded-full text-sm font-medium">
+                                    <span data-i18n="video-title"></span>: <span data-i18n="reproduction-test-agent-name"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
