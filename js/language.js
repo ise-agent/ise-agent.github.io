@@ -35,7 +35,13 @@ const translations = {
       // reproductiontestagent
       'reproduction-test-agent-name': 'Reproduction Testing Intelligent Agent',
       'reproduction-test-agent-desc': 'The Reproduction Testing Intelligent Agent is a multi-agent workflow based on knowledge graphs and various shell tools. It is a reproduction test generation agent integrating suspicious code localization, root cause analysis, test prompting, and iterative feedback, achieving a 55% (166/300) fail-to-pass rate on SWE-bench Lite.',
-      'reproduction-test-agent-tag-1': 'SWE-bench Lite reproduction rate: 55%'
+      'reproduction-test-agent-tag-1': 'SWE-bench Lite reproduction rate: 55%',
+
+      // alert-repair-agent
+      'alert-repair-agent-name': 'Alert Repair Agent',
+      'alert-repair-agent-desc': 'The Alert Repair Agent is an automated code maintenance tool that can respond to inspection commands issued by developers in code repositories, enabling end-to-end automation from code repository analysis to issue remediation. It can automatically clone repositories, perform in-depth static code scanning and potential issue identification, generate detailed analysis reports, automatically create repair branches and submit PRs, and finally feed back analysis results and repair details to users. This significantly improves the efficiency of handling code issues and simplifies the code maintenance process for development teams.',
+      'alert-repair-agent-tag-1': 'Potential Issue Localization Rate: 94%'
+
     //  ...........
   },
   zh: {
@@ -72,7 +78,14 @@ const translations = {
     // reproductiontestagent
     'reproduction-test-agent-name': '缺陷复现智能体',
     'reproduction-test-agent-desc': '缺陷复现智能体是基于知识图谱和多种 shell 工具的多 Agent 工作流，是一个结合可疑代码定位、根因分析、测试提示和迭代反馈的复现测试生成 Agent，在 swebench-lite 上实现了 55%（166/300）的 fail-to-pass 率。',
-    'reproduction-test-agent-tag-1': 'swebench-lite 复现率 55%'
+    'reproduction-test-agent-tag-1': 'swebench-lite 复现率 55%',
+    
+    
+    // alert-repair-agent
+    'alert-repair-agent-name': '告警修复智能体',
+    'alert-repair-agent-desc': '告警修复智能体是一款自动化代码维护工具，能响应开发者在代码仓库中提出的检查命令，实现从代码仓库分析到问题修复的全流程自动化。它可自动克隆仓库、深度代码静态扫描与潜在问题识别，生成详细分析报告；自动创建修复分支并提交 PR，最终将分析结果与修复详情反馈至用户，大幅提升代码问题处理效率，简化开发团队的代码维护流程。',
+    'alert-repair-agent-tag-1': '潜在问题定位率 94%'
+
     // ...............
 
     
