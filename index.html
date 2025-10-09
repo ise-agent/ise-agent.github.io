@@ -14,14 +14,22 @@
     <!-- 引入样式文件 -->
     <link rel="stylesheet" href="./css/styles.css">
 
-     <script>
-        // 访问根目录时删除语言偏好，确保默认显示英文
-        window.addEventListener('load', function() {
-            // 检查是否是根目录下的index.html
-            if (window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
+    <!-- 添加语言偏好处理逻辑 -->
+    <script>
+        // 在加载language.js前处理语言偏好
+        (function() {
+            // 获取当前URL路径和来源路径
+            const currentPath = window.location.pathname;
+            const referrer = document.referrer;
+            
+            // 判断是否从/cn目录跳转过来
+            const isFromCN = referrer.includes('/cn/') || referrer.includes('/cn');
+            
+            // 直接访问根目录且非从cn跳转时，清除语言偏好（确保默认英文）
+            if ((currentPath === '/' || currentPath.endsWith('/index.html')) && !isFromCN) {
                 localStorage.removeItem('preferredLang');
             }
-        });
+        })();
     </script>
     
 </head>
