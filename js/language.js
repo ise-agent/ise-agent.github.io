@@ -102,7 +102,7 @@ function updateURL() {
   
   // 使用 History API 修改 URL 而不刷新页面
   if (window.location.pathname !== newPath) {
-    window.history.pushState({}, '', basePath + newPath);
+    window.history.replaceState({}, '', basePath + newPath);
   }
 }
 
