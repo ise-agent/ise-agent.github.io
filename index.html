@@ -13,6 +13,16 @@
     
     <!-- 引入样式文件 -->
     <link rel="stylesheet" href="./css/styles.css">
+
+     <script>
+        // 访问根目录时删除语言偏好，确保默认显示英文
+        window.addEventListener('load', function() {
+            // 检查是否是根目录下的index.html
+            if (window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
+                localStorage.removeItem('preferredLang');
+            }
+        });
+    </script>
     
 </head>
 <body class="font-inter text-dark min-h-screen">
