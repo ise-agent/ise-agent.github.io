@@ -95,6 +95,17 @@ const translations = {
 // 初始化语言
 let currentLang = 'en';
 
+// 更新地址栏URL
+function updateURL() {
+  const basePath = window.location.origin;
+  const newPath = currentLang === 'zh' ? '/cn' : '/';
+  
+  // 使用 History API 修改 URL 而不刷新页面
+  if (window.location.pathname !== newPath) {
+    window.history.pushState({}, '', basePath + newPath);
+  }
+}
+
 // 切换语言函数
 function toggleLanguage() {
   currentLang = (currentLang === 'zh' ? 'en' : 'zh');
@@ -111,7 +122,8 @@ document.querySelector('.en').classList.toggle('hidden', currentLang !== 'en');
     }
   });
   
-
+  // 更新地址栏URL
+  updateURL();
   
   // 保存当前语言到本地存储
   localStorage.setItem('preferredLang', currentLang);
