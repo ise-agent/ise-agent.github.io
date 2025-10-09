@@ -15,21 +15,16 @@
     <link rel="stylesheet" href="./css/styles.css">
 
     <!-- 添加语言偏好处理逻辑 -->
-    <script>
-        // 在加载language.js前处理语言偏好
-        (function() {
-            // 获取当前URL路径和来源路径
-            const currentPath = window.location.pathname;
-            const referrer = document.referrer;
-            
-            // 判断是否从/cn目录跳转过来
-            const isFromCN = referrer.includes('/cn/') || referrer.includes('/cn');
-            
-            // 直接访问根目录且非从cn跳转时，清除语言偏好（确保默认英文）
-            if ((currentPath === '/' || currentPath.endsWith('/index.html')) && !isFromCN) {
-                localStorage.removeItem('preferredLang');
-            }
-        })();
+        <script>
+        // 获取来源路径（即跳转前的页面URL）
+        const referrer = document.referrer;
+        // 判断来源是否包含 '/cn' 路径
+        const isFromCN = referrer.includes('/cn');
+        
+        // 如果不是从 /cn 跳转过来，则设置语言偏好为 en
+        if (!isFromCN) {
+            localStorage.setItem('preferredLang', 'en');
+        }
     </script>
     
 </head>
